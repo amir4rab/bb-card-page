@@ -1,0 +1,33 @@
+@keyframes card-menu-kf-new {
+  from {
+    transform: translateY(100svh);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+::view-transition-new(card-menu-transition) {
+  animation: card-menu-kf-new var(--vt-timing-function) var(--vt-duration)
+    forwards;
+}
+
+@keyframes card-menu-kf-old {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100svh);
+  }
+}
+
+::view-transition-old(card-menu-transition) {
+  animation: card-menu-kf-old var(--vt-timing-function) var(--vt-duration)
+    forwards;
+}
+
+@layer components {
+  .card-menu {
+    view-transition-name: card-menu-transition;
+  }
+}

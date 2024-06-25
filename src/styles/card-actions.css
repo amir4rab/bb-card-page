@@ -1,0 +1,39 @@
+@keyframes card-actions-kf-new {
+  from {
+    transform: translateY(calc(110% + theme(spacing.8))) scale(1.25);
+    filter: blur(12px);
+  }
+  to {
+    transform: translateY(0%) scale(1);
+    filter: blur(0px);
+  }
+}
+
+::view-transition-new(card-actions-transition) {
+  animation: card-actions-kf-new var(--vt-timing-function) var(--vt-duration)
+    forwards;
+}
+
+@keyframes card-actions-kf-old {
+  from {
+    transform: scale(1);
+    filter: blur(0px);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.25);
+    filter: blur(12px);
+    opacity: 0;
+  }
+}
+
+::view-transition-old(card-actions-transition) {
+  animation: card-actions-kf-old var(--vt-timing-function) var(--vt-duration)
+    forwards;
+}
+
+@layer components {
+  .card-actions {
+    view-transition-name: card-actions-transition;
+  }
+}

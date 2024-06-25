@@ -1,0 +1,27 @@
+@keyframes animate-card {
+  from {
+  }
+  to {
+    transform: scale(0.9) rotate(10deg)
+      translateY(calc(25% + theme(spacing.10)));
+    filter: blur(8px);
+  }
+}
+
+::view-transition-group(card-transition) {
+  animation-duration: var(--vt-duration);
+  animation-timing-function: var(--vt-timing-function);
+}
+
+@layer components {
+  .card {
+    view-transition-name: card-transition;
+    &[data-focused="false"] {
+      @supports (animation-timeline: view()) {
+        animation: animate-card linear forwards;
+        animation-timeline: view();
+        animation-range: 47% 51%;
+      }
+    }
+  }
+}

@@ -4,8 +4,8 @@
 
 :root {
   /* The following variables are used for synchronizing the transition times and easing functions */
-  --cb-easing: cubic-bezier(0.58, 1.06, 0.51, 0.98);
-  --transition-duration: 350ms;
+  --vt-timing-function: theme(transitionTimingFunction.cubic-bezier);
+  --vt-duration: 350ms;
 }
 
 *,
@@ -18,4 +18,18 @@
 body {
   /* Setting the body background to a black natural color */
   @apply text-stone-50 bg-black;
+}
+
+@layer utilities {
+  /* Modifies the stylings depending on support for the view transition API */
+  .view-transition {
+    @supports (view-transition-name: none) {
+      transition: none;
+    }
+
+    @supports not (view-transition-name: none) {
+      transition-duration: var(--vt-duration);
+      transition-timing-function: var(--vt-timing-function);
+    }
+  }
 }

@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* The following variables are used for synchronizing the transition times and easing functions */
+  --cb-easing: cubic-bezier(0.58, 1.06, 0.51, 0.98);
+  --transition-duration: 350ms;
+}
+
+*,
+*::before,
+*::after {
+  /* Setting the appearance to dark since it is our only target */
+  appearance: dark;
+}
+
+body {
+  /* Setting the body background to a black natural color */
+  @apply text-stone-50 bg-black;
+}
